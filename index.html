@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f6fa">
+  <meta name="description" content="Checklist giornaliera del veicolo per autisti e società di trasporti.">
+  <title>Controllo giornaliero | Flotta</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Torri Bianche, inizio">
+      <img class="brand-logo" src="./TorriBianche_logo.svg" alt="Torri Bianche">
+    </a>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">
+      <span class="theme-icon" aria-hidden="true">◐</span>
+      <span class="theme-label">Tema scuro</span>
+    </button>
+  </header>
+
+  <main class="page-shell">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> PROCEDURA GIORNALIERA</p>
+      <h1 id="page-title">Controllo del veicolo</h1>
+      <p class="intro-copy">Compila la checklist prima di iniziare il viaggio. Il controllo viene registrato con data e ora.</p>
+    </section>
+
+    <form id="inspection-form" novalidate>
+      <section class="card driver-card" aria-labelledby="driver-heading">
+        <div class="section-heading">
+          <span class="step-number" aria-hidden="true">01</span>
+          <div>
+            <h2 id="driver-heading">Dati del controllo</h2>
+            <p>Identifica chi effettua la verifica e il veicolo.</p>
+          </div>
+        </div>
+        <div class="driver-grid">
+          <div class="field">
+            <label for="driver-name">Nome e cognome <span class="required-mark" aria-hidden="true">*</span></label>
+            <input id="driver-name" name="driverName" type="text" autocomplete="name" placeholder="Es. Mario Rossi" required aria-describedby="driver-name-error">
+            <span class="field-error" id="driver-name-error"></span>
+          </div>
+          <div class="field">
+            <label for="vehicle-plate">Targa veicolo <span class="required-mark" aria-hidden="true">*</span></label>
+            <input id="vehicle-plate" name="vehiclePlate" type="text" autocomplete="off" placeholder="Es. FH123AB" required aria-describedby="vehicle-plate-error">
+            <span class="field-error" id="vehicle-plate-error"></span>
+          </div>
+          <div class="field">
+            <label for="inspection-date">Data controllo</label>
+            <div class="readonly-wrap"><span aria-hidden="true">▦</span><input id="inspection-date" name="inspectionDate" type="text" readonly aria-label="Data automatica del controllo"></div>
+          </div>
+          <div class="field">
+            <label for="inspection-time">Ora controllo</label>
+            <div class="readonly-wrap"><span aria-hidden="true">◷</span><input id="inspection-time" name="inspectionTime" type="text" readonly aria-label="Ora automatica del controllo"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card checklist-card" aria-labelledby="checklist-heading">
+        <div class="section-heading">
+          <span class="step-number" aria-hidden="true">02</span>
+          <div>
+            <h2 id="checklist-heading">Checklist del veicolo</h2>
+            <p>Seleziona un esito per ogni voce.</p>
+          </div>
+          <span class="required-note"><span class="required-mark" aria-hidden="true">*</span> Obbligatorio</span>
+        </div>
+        <div class="checklist">
+          <fieldset class="check-row" data-check="pneumatici" aria-describedby="checklist-error">
+            <legend><span class="check-icon" aria-hidden="true">◉</span><span>Pressione pneumatici</span></legend>
+            <div class="choice-group">
+              <label class="choice choice-ok"><input type="radio" name="check-pneumatici" value="OK" required><span>✓ OK</span></label>
+              <label class="choice choice-ko"><input type="radio" name="check-pneumatici" value="KO" required><span>× KO</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="check-row" data-check="luci" aria-describedby="checklist-error">
+            <legend><span class="check-icon" aria-hidden="true">☼</span><span>Luci</span></legend>
+            <div class="choice-group">
+              <label class="choice choice-ok"><input type="radio" name="check-luci" value="OK" required><span>✓ OK</span></label>
+              <label class="choice choice-ko"><input type="radio" name="check-luci" value="KO" required><span>× KO</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="check-row" data-check="olio" aria-describedby="checklist-error">
+            <legend><span class="check-icon" aria-hidden="true">◌</span><span>Livelli olio</span></legend>
+            <div class="choice-group">
+              <label class="choice choice-ok"><input type="radio" name="check-olio" value="OK" required><span>✓ OK</span></label>
+              <label class="choice choice-ko"><input type="radio" name="check-olio" value="KO" required><span>× KO</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="check-row" data-check="batteria" aria-describedby="checklist-error">
+            <legend><span class="check-icon" aria-hidden="true">▰</span><span>Batteria</span></legend>
+            <div class="choice-group">
+              <label class="choice choice-ok"><input type="radio" name="check-batteria" value="OK" required><span>✓ OK</span></label>
+              <label class="choice choice-ko"><input type="radio" name="check-batteria" value="KO" required><span>× KO</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="check-row" data-check="spie" aria-describedby="checklist-error">
+            <legend><span class="check-icon" aria-hidden="true">!</span><span>Spie accese</span></legend>
+            <div class="choice-group">
+              <label class="choice choice-ok"><input type="radio" name="check-spie" value="OK" required><span>✓ OK</span></label>
+              <label class="choice choice-ko"><input type="radio" name="check-spie" value="KO" required><span>× KO</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="check-row" data-check="dotazioni" aria-describedby="checklist-error">
+            <legend><span class="check-icon" aria-hidden="true">▣</span><span>Dotazioni di bordo</span></legend>
+            <div class="choice-group">
+              <label class="choice choice-ok"><input type="radio" name="check-dotazioni" value="OK" required><span>✓ OK</span></label>
+              <label class="choice choice-ko"><input type="radio" name="check-dotazioni" value="KO" required><span>× KO</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="check-row" data-check="semirimorchio" aria-describedby="checklist-error">
+            <legend><span class="check-icon" aria-hidden="true">▱</span><span>Stato semirimorchio</span></legend>
+            <div class="choice-group">
+              <label class="choice choice-ok"><input type="radio" name="check-semirimorchio" value="OK" required><span>✓ OK</span></label>
+              <label class="choice choice-ko"><input type="radio" name="check-semirimorchio" value="KO" required><span>× KO</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <p class="checklist-error field-error" id="checklist-error" role="status"></p>
+      </section>
+
+      <section class="card notes-card" aria-labelledby="notes-heading">
+        <div class="section-heading">
+          <span class="step-number" aria-hidden="true">03</span>
+          <div>
+            <h2 id="notes-heading">Segnalazioni e foto</h2>
+            <p>Descrivi eventuali anomalie e aggiungi immagini utili.</p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="notes">Segnalazioni <span class="conditional-label">obbligatorie in caso di KO</span></label>
+          <textarea id="notes" name="notes" rows="4" placeholder="Descrivi le anomalie riscontrate..." aria-describedby="notes-help notes-error"></textarea>
+          <span class="field-hint" id="notes-help">Se uno o più controlli sono KO, indica qui i dettagli.</span>
+          <span class="field-error" id="notes-error"></span>
+        </div>
+        <div class="photo-area">
+          <label class="photo-label" for="photos">Fotografie <span class="optional-label">facoltative</span></label>
+          <label class="photo-picker" for="photos">
+            <span class="upload-icon" aria-hidden="true">＋</span>
+            <span><strong>Aggiungi fotografie</strong><small>Scatta o scegli immagini dal dispositivo</small></span>
+            <span class="picker-arrow" aria-hidden="true">›</span>
+          </label>
+          <input class="visually-hidden" id="photos" name="photos" type="file" accept="image/*" capture="environment" multiple aria-describedby="photo-help">
+          <span class="field-hint" id="photo-help">Le immagini selezionate saranno mostrate nel riepilogo; nel JSON vengono inclusi i nomi dei file.</span>
+          <div class="photo-preview" id="photo-preview" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <p class="form-error" id="form-error" role="alert" tabindex="-1"></p>
+      <button class="submit-button" type="submit">
+        <span>Controllo terminato</span>
+        <span class="button-arrow" aria-hidden="true">→</span>
+      </button>
+      <p class="privacy-note">La checklist viene salvata in un file JSON scaricabile al termine del controllo.</p>
+    </form>
+
+    <section class="summary card" id="summary" aria-labelledby="summary-heading" hidden>
+      <div class="summary-banner" id="summary-banner" data-result="ok">
+        <span class="traffic-light" aria-hidden="true"><span></span></span>
+        <div>
+          <p class="summary-kicker" id="summary-status">TUTTI I CONTROLLI OK</p>
+          <h2 id="summary-heading">Controllo completato correttamente</h2>
+        </div>
+      </div>
+      <div class="summary-body">
+        <div class="summary-meta">
+          <span>IDENTIFICATIVO CONTROLLO</span>
+          <strong id="summary-id"></strong>
+        </div>
+        <div class="summary-details" id="summary-details"></div>
+        <div class="summary-checks" id="summary-checks"></div>
+        <div class="summary-notes" id="summary-notes" hidden></div>
+        <div class="summary-photos" id="summary-photos" hidden></div>
+        <a class="download-button" id="download-link" download="controllo-veicolo.json">
+          <span aria-hidden="true">↓</span> Scarica riepilogo JSON
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">CHECKLIST DIGITALE <span aria-hidden="true">·</span> FLOTTA</footer>
+</body>
+</html>
